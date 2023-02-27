@@ -4,9 +4,22 @@ import React, { useState } from "react";
 
 function App() {
   const [contacts, setContacts] = useState(contactsData.slice(0, 5));
+
+  const handleAddRandom = () => {
+    const randomContact =
+      contactsData[Math.floor(Math.random() * contactsData.length)];
+    if (contacts.length === contactsData.length) return;
+    if (contacts.some((elem) => elem.id === randomContact.id)) {
+      handleAddRandom();
+    } else {
+      setContacts([...contacts, randomContact]);
+    }
+  };
+
   return (
     <div className="App">
       <h1> Iron Contacts</h1>
+      <button onClick={handleAddRandom}> Add Random Contact</button>
       <table>
         <thead>
           <tr>
