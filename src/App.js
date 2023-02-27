@@ -16,10 +16,23 @@ function App() {
     }
   };
 
+  const handleSortByName = () => {
+    const sortedContactsName = [...contacts].sort(function(a,b){
+      return (a.name < b.name ? -1: (a.name > b.name) ? 1 : 0)
+    })
+    setContacts(sortedContactsName);
+  };
+
+  const handleSortByPopularity =()=>{
+    const sortedContacts = [...contacts].sort((a,b)=> b.popularity-a.popularity)
+    setContacts(sortedContacts)
+  }
   return (
     <div className="App">
       <h1> Iron Contacts</h1>
       <button onClick={handleAddRandom}> Add Random Contact</button>
+      <button onClick={handleSortByName}> Sort By Name</button>
+      <button onClick={handleSortByPopularity}> Sort by Popularity</button>
       <table>
         <thead>
           <tr>
@@ -39,7 +52,7 @@ function App() {
                   <img src={contact.pictureUrl} alt="contact-img"></img>
                 </td>
                 <td>{contact.name}</td>
-                <td>{contact.popularity}</td>
+                <td>{contact.popularity.toFixed(1)}</td>
                 <td>{contact.wonOscar && "🏆"}</td>
                 <td>{contact.wonEmmy && "🏅"}</td>
                 <td>
