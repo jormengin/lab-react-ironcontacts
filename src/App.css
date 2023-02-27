@@ -1,8 +1,9 @@
 .App {
   text-align: center;
+  max-width: 70vw;
 }
 table{
-  width: 100vw;
+  width: 70vw;
 }
 td>img{
   max-width: 90px;
@@ -12,7 +13,7 @@ button {
   --color: #98c5f9;
   font-family: inherit;
   display: inline-block;
-  width: 6em;
+  width: 9em;
   height: 2.6em;
   line-height: 2.5em;
   overflow: hidden;
@@ -53,5 +54,7 @@ button:hover::before {
 .delete-button{
   background-color: rgb(244, 185, 164);
   color: black;
-  border-color: rgb(244, 185, 164);;
+  border-color: rgb(244, 185, 164);
+  width: auto;
+  padding: 0 10px;
 }
