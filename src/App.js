@@ -17,20 +17,22 @@ function App() {
   };
 
   const handleSortByName = () => {
-    const sortedContactsName = [...contacts].sort(function(a,b){
-      return (a.name < b.name ? -1: (a.name > b.name) ? 1 : 0)
-    })
+    const sortedContactsName = [...contacts].sort(function (a, b) {
+      return a.name < b.name ? -1 : a.name > b.name ? 1 : 0;
+    });
     setContacts(sortedContactsName);
   };
 
-  const handleSortByPopularity =()=>{
-    const sortedContacts = [...contacts].sort((a,b)=> b.popularity-a.popularity)
-    setContacts(sortedContacts)
-  }
-  const handleDelete =(contactId)=>{
-    const filteredArr = contacts.filter(element => element.id !== contactId)
-    setContacts(filteredArr)
-  }
+  const handleSortByPopularity = () => {
+    const sortedContacts = [...contacts].sort(
+      (a, b) => b.popularity - a.popularity
+    );
+    setContacts(sortedContacts);
+  };
+  const handleDelete = (contactId) => {
+    const filteredArr = contacts.filter((element) => element.id !== contactId);
+    setContacts(filteredArr);
+  };
   return (
     <div className="App">
       <h1> Iron Contacts</h1>
@@ -60,7 +62,12 @@ function App() {
                 <td>{contact.wonOscar && "🏆"}</td>
                 <td>{contact.wonEmmy && "🏅"}</td>
                 <td>
-                  <button className="delete-button" onClick={()=> handleDelete(contact.id)}>Delete</button>
+                  <button
+                    className="delete-button"
+                    onClick={() => handleDelete(contact.id)}
+                  >
+                    Delete
+                  </button>
                 </td>
               </tr>
             );
